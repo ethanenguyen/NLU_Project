@@ -1,16 +1,20 @@
 The paper : 
 https://www.researchgate.net/publication/331658257_Knowledge_Graph_Embedding_Based_Question_Answering
 
-1. KG Embedding using TransE, TransH, TransR, and PTransE ( C++, not Python )
+~~1. KG Embedding using TransE, TransH, TransR, and PTransE ( C++, not Python )
 https://github.com/thunlp/KB2E
 
 2. KG Embedding Based Question Answering  (ZichaoHuang)
 https://github.com/xhuang31/KEQA_WSDM19
 
-3. The Python's TransE from ZichaoHuang ( TensorFlow, not Pytorch )
+~~3. The Python's TransE from ZichaoHuang ( TensorFlow, not Pytorch )
 https://github.com/ZichaoHuang/TransE
 
-3. transE_emb.py
+4. The Python's TransE using Pytorch
+https://github.com/xjdwrj/TransE-Pytorch
+
+
+**Notice: transE_emb.py
 I didn't find the ‘ transE_emb.py ’ file in your code, so I would like to ask how the initialization vector of transE is represented in the training, or can you give me the ‘ transE_emb.py ’ file? At the same time, I have a question about KEQA. The vectorized representation obtained after KEQA is not in the same vector space as the embedded representation TransE, so when the Euclidean distance between the two is found, will there be an error match?
 
 @xhuang31
@@ -23,5 +27,4 @@ Knowledge graph embedding is not the focus of our paper. For the TransE embeddin
 
 Yes, you are right. It is not an error match, but an inaccurate match. Our goal is to make the predicted entity representation as close as possible to the representation of the correct head entity. The goal is NOT to recover exactly the same representation, but a close one, so that the learned vector could be used as a pointer to lead us to the current head entity.
 
-4. The Python's TransE using Pytorch
-https://github.com/xjdwrj/TransE-Pytorch
+
