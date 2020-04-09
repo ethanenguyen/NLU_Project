@@ -1,5 +1,5 @@
 The paper : 
-https://www.researchgate.net/publication/331658257_Knowledge_Graph_Embedding_Based_Question_Answering
+http://people.tamu.edu/~xhuang/Xiao_WSDM19.pdf
 
 
 2. KG Embedding Based Question Answering  (ZichaoHuang)
