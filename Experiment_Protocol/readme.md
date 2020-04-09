@@ -10,7 +10,7 @@ https://github.com/xhuang31/KEQA_WSDM19
 https://github.com/xjdwrj/TransE-Pytorch
 
 
-
+-----------------------------------------------------------------------------------------------------------
 
 1. KG Embedding using TransE, TransH, TransR, and PTransE ( C++, not Python )
 https://github.com/thunlp/KB2E
