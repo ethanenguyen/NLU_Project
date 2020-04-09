@@ -2,7 +2,7 @@ The paper :
 https://www.researchgate.net/publication/331658257_Knowledge_Graph_Embedding_Based_Question_Answering
 
 ~~1. KG Embedding using TransE, TransH, TransR, and PTransE ( C++, not Python )
-https://github.com/thunlp/KB2E~~
+https://github.com/thunlp/KB2E ~~
 
 2. KG Embedding Based Question Answering  (ZichaoHuang)
 https://github.com/xhuang31/KEQA_WSDM19
