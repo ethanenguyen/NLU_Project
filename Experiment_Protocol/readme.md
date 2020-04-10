@@ -2,14 +2,15 @@ The papers :
 * http://people.tamu.edu/~xhuang/Xiao_WSDM19.pdf
 * https://arxiv.org/pdf/2001.11985.pdf
 
-2. KG Embedding Based Question Answering  (ZichaoHuang)
+1. KG Embedding Based Question Answering  (ZichaoHuang)
 https://github.com/xhuang31/KEQA_WSDM19
 
 
-4. The Python's TransE using Pytorch
+2. The Python's TransE using Pytorch
 https://github.com/xjdwrj/TransE-Pytorch
 
-
+3. Fine tune BERT for QA with SQUAD
+https://hackernoon.com/nlp-tutorial-creating-question-answering-system-using-bert-squad-on-colab-tpu-1utp3352
 -----------------------------------------------------------------------------------------------------------
 
 1. KG Embedding using TransE, TransH, TransR, and PTransE ( C++, not Python )
