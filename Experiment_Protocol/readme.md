@@ -1,6 +1,6 @@
-The paper : 
+The papers : 
 http://people.tamu.edu/~xhuang/Xiao_WSDM19.pdf
-
+https://arxiv.org/pdf/2001.11985.pdf
 
 2. KG Embedding Based Question Answering  (ZichaoHuang)
 https://github.com/xhuang31/KEQA_WSDM19
