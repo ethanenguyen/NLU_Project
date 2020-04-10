@@ -13,9 +13,7 @@ https://github.com/xjdwrj/TransE-Pytorch
 https://hackernoon.com/nlp-tutorial-creating-question-answering-system-using-bert-squad-on-colab-tpu-1utp3352
 
 4. Trains Bert over Freebase knowledge graph
-https://arxiv.org/pdf/1909.03193.pdf
-
-and the code
+https://arxiv.org/pdf/1909.03193.pdf and the code
 https://github.com/yao8839836/kg-bert
 
 -----------------------------------------------------------------------------------------------------------
