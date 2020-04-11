@@ -5,9 +5,8 @@ The papers :
 1. KG Embedding Based Question Answering  (ZichaoHuang)
 https://github.com/xhuang31/KEQA_WSDM19
 
-2. Here is the pdf ( it includes the video which is also helpful )
+2. Strong baseline with or without NN
 https://www.aclweb.org/anthology/N18-2047/
-
 The code: https://github.com/castorini/BuboQA
 
 3. Fine tune BERT for QA with SQUAD
