@@ -15,6 +15,11 @@ https://hackernoon.com/nlp-tutorial-creating-question-answering-system-using-ber
 4. Fine tune BERT for NER
 https://www.depends-on-the-definition.com/named-entity-recognition-with-bert/
 
+5. Strong Baselines for Simple Question Answering
+https://www.aclweb.org/anthology/N18-2047/
+The code:
+https://github.com/castorini/BuboQA
+
 5. Trains Bert over Freebase knowledge graph
 https://arxiv.org/pdf/1909.03193.pdf and the code
 https://github.com/yao8839836/kg-bert
