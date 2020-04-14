@@ -15,6 +15,8 @@ https://hackernoon.com/nlp-tutorial-creating-question-answering-system-using-ber
 4. Fine tune BERT for NER
 https://www.depends-on-the-definition.com/named-entity-recognition-with-bert/
 
+4b. Tune Bert https://mccormickml.com/2019/07/22/BERT-fine-tuning/
+
 5. Strong Baselines for Simple Question Answering
 https://www.aclweb.org/anthology/N18-2047/
 the code:
