@@ -91,8 +91,10 @@ for epoch in range (0, args.epochs):
         batch_labels = batch[1]
         max_question_length = utils.max_len(batch_questions)
         batch_train_ids, batch_train_masks =  \
-            utils.get_tokenized_sentences(tokenizer, batch_questions, max_question_length)
-        batch_train_labels = utils.get_ed_labels(batch_labels, max_question_length)
+            utils.get_tokenized_sentences(tokenizer, batch_questions)
+        # batch_train_labels have to have the same length with the input_ids in order to calculate loss
+        batch_train_labels = utils.get_ed_labels(batch_labels, batch_train_ids.size()[1])
+
         batch_train_ids    = batch_train_ids.to(device)
         batch_train_masks  = batch_train_masks.to(device)
         batch_train_labels = batch_train_labels.to(device)
@@ -120,8 +122,8 @@ for epoch in range (0, args.epochs):
                 batch_labels = dev_batch[1]
                 max_question_length = utils.max_len(batch_questions)
                 batch_dev_ids, batch_dev_masks = \
-                    utils.get_tokenized_sentences(tokenizer, batch_questions, max_question_length)
-                batch_dev_labels = utils.get_ed_labels(batch_labels, max_question_length)
+                    utils.get_tokenized_sentences(tokenizer, batch_questions)
+                batch_dev_labels = utils.get_ed_labels(batch_labels, batch_dev_ids.size()[1])
                 batch_dev_ids    = batch_dev_ids.to(device)
                 batch_dev_masks  = batch_dev_masks.to(device)
                 batch_dev_labels = batch_dev_labels.to(device)

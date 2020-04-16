@@ -44,18 +44,16 @@ pd_train = pd.read_csv( os.path.join(args.data_dir,"train.txt"), delimiter="\t",
 pd_dev = pd.read_csv( os.path.join(args.data_dir,"valid.txt"), delimiter="\t", header=None,
                         names= field_names, usecols=["question", "entity_label"])
 
-max_question_length = utils.max_len(pd_train["question"], pd_dev["question"])
-if max_question_length > args.max_length:
-    max_question_length = args.max_length
-print('Max question length:', max_question_length)
 
 # tokenized IDs, attention masks, and annotated lables for TRAIN questions
-train_input_ids, train_attention_masks = utils.get_tokenized_sentences(tokenizer, pd_train["question"], max_question_length)
-train_labels = utils.get_ed_labels(pd_train["entity_label"], max_question_length)
+train_input_ids, train_attention_masks = utils.get_tokenized_sentences(tokenizer, pd_train["question"])
+max_train_question_length = train_input_ids.size()[1]
+train_labels = utils.get_ed_labels(pd_train["entity_label"], max_train_question_length)
 
 # tokenized IDs, attention masks, and annotated lables for VALIDATION questions
-dev_input_ids, dev_attention_masks = utils.get_tokenized_sentences(tokenizer, pd_dev["question"], max_question_length)
-dev_labels = utils.get_ed_labels(pd_dev["entity_label"], max_question_length)
+dev_input_ids, dev_attention_masks = utils.get_tokenized_sentences(tokenizer, pd_dev["question"])
+max_dev_question_length = dev_input_ids.size()[1]
+dev_labels = utils.get_ed_labels(pd_dev["entity_label"], max_dev_question_length)
 
 # TRAIN data wrapper ( input_ids, masks, and labels )
 train_dataset = data.TensorDataset( train_input_ids, train_attention_masks, train_labels)

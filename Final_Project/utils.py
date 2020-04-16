@@ -36,7 +36,7 @@ def get_ed_labels( eds, max_sentence_length ):
 
     return torch.tensor(ed_labels)
 
-def get_tokenized_sentences( tokenizer, sentences, max_question_length):
+def get_tokenized_sentences2( tokenizer, sentences, max_question_length = None):
     """
     :param tokenizer: a Bert tokenizer
     :param sentences: a list of sentences that need to be tokenized and padded to a length max_question_length
@@ -58,6 +58,26 @@ def get_tokenized_sentences( tokenizer, sentences, max_question_length):
         attention_masks.append(encoded_dict['attention_mask'])
     input_ids = torch.cat(input_ids,dim = 0)
     attention_masks = torch.cat(attention_masks,dim = 0)
+    return input_ids,attention_masks
+
+def get_tokenized_sentences( tokenizer, sentences ):
+    """
+    :param tokenizer: a Bert tokenizer
+    :param sentences: a list of sentences that need to be tokenized and padded to a length max_question_length
+    :param max_question_length:
+    :return:
+    """
+    input_ids = []
+    attention_masks = []
+    encoded_dict = tokenizer.batch_encode_plus(
+            sentences,                       # Sentence to encode.
+            add_special_tokens=True,         # Add '[CLS]' and '[SEP]'
+            pad_to_max_length=True,
+            return_attention_mask=True,      # Construct attn. masks.
+            return_tensors='pt',            # Return pytorch tensors.
+            )
+    input_ids =encoded_dict['input_ids']
+    attention_masks = encoded_dict['attention_mask']
     return input_ids,attention_masks
 
 def calculate_correct_scores( scores, labels):
