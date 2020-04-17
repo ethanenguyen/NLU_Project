@@ -104,11 +104,21 @@ for epoch in range (0, args.epochs):
         ## batch_level: ( batch, length)
         loss = loss_fn(scores.permute(0,2,1), batch_train_labels)
         loss.backward()
-        torch.nn.utils.clip_grad_norm(model.parameters(), args.clip_gradient)
+        torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip_gradient)
         optimizer.step()
         n_total += len(batch_train_ids)
         n_correct += utils.calculate_correct_scores(scores, batch_train_labels)
         ##print( "total {}, correct {}".format(n_total, n_correct))
+
+        if iterations % args.log_every == 0:
+            # print progress message
+            print(log_template.format(time.time() - start,  epoch, iterations,
+                                      1 + step, len(train_dataloader), # progress
+                                      100. * (1 + step) / len(train_dataloader), # % done per epoch
+                                      loss.item(),  #loss
+                                      ' ' * 8,      # dev/loss
+                                      100. * n_correct / n_total, # accuracy
+                                      ' ' * 12))    # dev/accuracy
 
         #evaluate performance every args.dev_every
         if iterations % args.dev_every == 0:
@@ -120,7 +130,7 @@ for epoch in range (0, args.epochs):
             for dev_step,dev_batch in enumerate(dev_dataloader):
                 batch_questions = dev_batch[0]
                 batch_labels = dev_batch[1]
-                max_question_length = utils.max_len(batch_questions)
+                #max_question_length = utils.max_len(batch_questions)
                 batch_dev_ids, batch_dev_masks = \
                     utils.get_tokenized_sentences(tokenizer, batch_questions)
                 batch_dev_labels = utils.get_ed_labels(batch_labels, batch_dev_ids.size()[1])
@@ -153,15 +163,11 @@ for epoch in range (0, args.epochs):
                     break
 
 
-        if iterations % args.log_every == 1:
-            # print progress message
-            print(log_template.format(time.time() - start,  epoch, iterations,
-                                      1 + step, len(train_dataloader), # progress
-                                      100. * (1 + step) / len(train_dataloader), # % done per epoch
-                                      loss.item(),  #loss
-                                      ' ' * 8,      # dev/loss
-                                      100. * n_correct / n_total, # accuracy
-                                      ' ' * 12))    # dev/accuracy
 
+# the end, print the best performance score
+print("{} Precision: {:10.6f}% Recall: {:10.6f}% F1 Score: {:10.6f}%".format(
+             "Best Dev", 100. * best_dev_precision, 100. * best_dev_recall, 100. * best_dev_f1))
+
+            
 # '  Time    Epoch     Iteration Progress    (%Epoch)   Loss   Dev/Loss     Accuracy  Dev/Accuracy'
 #('{:>6.0f},{:>5.0f},  {:>9.0f}, {:>5.0f}/{:<5.0f} {:>7.0f}%,{:>8.6f},{},{},{}'.split(','))
