@@ -23,7 +23,7 @@ print (args)
 torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
-torch.backends.cudnn.deterministoc = True
+torch.backends.cudnn.deterministic = True
 
 device = "cpu"
 if args.cuda and torch.cuda.is_available():
@@ -56,7 +56,7 @@ os.makedirs(save_path, exist_ok=True)
 
 # initialize the model and related variables for training
 # n_classes = 3 : 0 for padding, 1 for O and 2 for I
-model = EntityDetectionModel(n_classes = 3, dropout= args.dropout)
+model = EntityDetectionModel(config = 2, n_classes = 3, dropout= args.dropout)
 model.to(device)
 optimizer = AdamW(model.parameters(), lr = args.lr )
 total_steps = len(train_dataloader)*args.epochs
@@ -75,7 +75,7 @@ print(header)
 index2tag = np.array(['X','O','I'])
 # start training
 start = time.time()
-
+print( "Model Config: ", model.config)
 for epoch in range (0, args.epochs):
     if early_stop:
         print("Early Stopping. Epoch: {}, Best Dev F1: {}".format(epoch, best_dev_f1))
@@ -161,6 +161,7 @@ for epoch in range (0, args.epochs):
                 if iters_not_improved >  patience:
                     early_stop = True
                     break
+
 
 
 # the end, print the best performance score

@@ -22,7 +22,7 @@ print (args)
 torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)
-torch.backends.cudnn.deterministoc = True
+torch.backends.cudnn.deterministic = True
 
 device = "cpu"
 if args.cuda and torch.cuda.is_available():
@@ -159,6 +159,7 @@ for epoch in range (0, args.epochs):
                 if iters_not_improved >  patience:
                     early_stop = True
                     break
+
 
 
 # the end, print the best dev performance score
